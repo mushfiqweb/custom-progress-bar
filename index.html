@@ -11,18 +11,18 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/modernizr.js" type="text/javascript"></script>
 	<script>
-		$(document).ready(function () {
+		$(() => {
 			if (!Modernizr.meter) {
 				alert('Sorry your brower does not support HTML5 progress bar');
 			} else {
-				var progressbar = $('#progressbar'),
-					max = progressbar.attr('max'),
-					time = (1000 / max) * 5,
-					value = progressbar.val();
+				let progressbar = $('#progressbar');
+				let max = progressbar.attr('max');
+				let time = (1000 / max) * 5;
+				let value = progressbar.val();
 
-				var loading = function () {
+				const loading = () => {
 					value += 1;
-					addValue = progressbar.val(value);
+					progressbar.val(value);
 
 					$('.progress-value').html(value + '%');
 
@@ -31,9 +31,7 @@
 					}
 				};
 
-				var animate = setInterval(function () {
-					loading();
-				}, time);
+				const animate = setInterval(() => loading(), time);
 			};
 		});
 	</script>
